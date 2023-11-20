@@ -21,8 +21,6 @@ export default function SignUp() {
     }
   }, []); // Empty dependency array ensures the effect runs only once on component mount
 
-
-
   const handleSignUp = async () => {
     try {
       const response = await fetch('/api/signup', {
@@ -35,15 +33,22 @@ export default function SignUp() {
 
       if (response.ok) {
         // Redirect to the app's main page upon successful sign-up
+        setErrorMessage('');
         router.push('/home');
       } else {
         const data = await response.json();
         console.error('Sign-up error:', data.error);
         // Handle and display the error to the user
-        setErrorMessage('Email already exist');
+        setErrorMessage(data.error);
       }
     } catch (error) {
       console.error('Error signing up:', error);
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage('Invalid email format');
     }
   };
 

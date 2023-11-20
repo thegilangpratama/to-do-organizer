@@ -35,6 +35,7 @@ const SignIn: React.FC = () => {
       if (response.ok) {
         // Redirect to the app's main page upon successful sign-in
         sessionStorage.setItem('isLoggedIn', 'true');
+        setErrorMessage('');
         router.push('/home'); // Change the redirection path as needed
       } else {
         const data = await response.json();
@@ -44,6 +45,12 @@ const SignIn: React.FC = () => {
       }
     } catch (error) {
       console.error('Error signing in:', error);
+    }
+
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setErrorMessage('Invalid email format');
     }
   };
 
