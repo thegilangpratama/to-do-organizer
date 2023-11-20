@@ -1,6 +1,20 @@
-import Image from 'next/image'
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
 
-export default function Home() {
+const Home = () => {
+  const router = useRouter();
+
+  useEffect(() => {
+    // Check the user's login status (you might use a more secure method here)
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+
+    // If user is not logged in, redirect to the home page
+    if (!isLoggedIn) {
+      router.push('/');
+    }
+  }, [router]);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -109,5 +123,7 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
-}
+  );
+};
+
+export default Home;

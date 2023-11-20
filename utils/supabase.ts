@@ -1,5 +1,3 @@
-// supabase.ts
-
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
 // Load environment variables from .env file

@@ -1,30 +1,31 @@
-// pages/signin.tsx
+// pages/signup.tsx
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Inter } from 'next/font/google';
-import '../app/globals.css';
-import Link from 'next/link';
+import { Inter } from 'next/font/google'
+import '../app/globals.css'
 
-const SignIn: React.FC = () => {
+export default function SignUp() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    // Check the user's login status when the component mounts
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    // Check if the user is already logged in
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
 
-    // If user is logged in, redirect to /home
-    if (isLoggedIn === 'true') {
+    if (isLoggedIn) {
+      // Redirect to "/home" if the user is already logged in
       router.push('/home');
     }
-  }, [router]);
+  }, []); // Empty dependency array ensures the effect runs only once on component mount
 
-  const handleSignIn = async () => {
+
+
+  const handleSignUp = async () => {
     try {
-      const response = await fetch('/api/signin', {
+      const response = await fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,24 +34,23 @@ const SignIn: React.FC = () => {
       });
 
       if (response.ok) {
-        // Redirect to the app's main page upon successful sign-in
-        sessionStorage.setItem('isLoggedIn', 'true');
-        router.push('/home'); // Change the redirection path as needed
+        // Redirect to the app's main page upon successful sign-up
+        router.push('/home');
       } else {
         const data = await response.json();
-        console.error('Sign-in error:', data.error);
+        console.error('Sign-up error:', data.error);
         // Handle and display the error to the user
-        setErrorMessage(data.error || 'An error occurred during sign-in.');
+        setErrorMessage('Email already exist');
       }
     } catch (error) {
-      console.error('Error signing in:', error);
+      console.error('Error signing up:', error);
     }
   };
 
   return (
     <div className="flex items-center justify-center h-screen bg-white">
       <div className="w-96 p-8 bg-gray-100 rounded shadow-md">
-        <h1 className="text-2xl font-bold mb-4">Sign In</h1>
+        <h1 className="text-2xl font-bold mb-4">Sign Up</h1>
         <input
           type="email"
           placeholder="Email"
@@ -65,19 +65,17 @@ const SignIn: React.FC = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        {errorMessage && <p className="text-red-500 text-xs mb-2">{errorMessage}</p>}
+        { errorMessage && <p className="text-red-500 text-xs mb-2">{errorMessage}</p> }
         <button
           className="w-full bg-blue-500 text-white p-2 rounded"
-          onClick={handleSignIn}
+          onClick={handleSignUp}
         >
-          Sign In
+          Sign Up
         </button>
         <p className="text-sm mb-2 mt-5 text-center">
-          <a className="text-blue-500" href="/signup">Sign up</a> here if you don't have an account
+          <a className="text-blue-500" href="/">Sign in</a> here if you have an account
         </p>
       </div>
     </div>
   );
-};
-
-export default SignIn;
+}
