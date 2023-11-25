@@ -16,9 +16,9 @@ const SignIn: React.FC = () => {
     // Check the user's login status when the component mounts
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
 
-    // If user is logged in, redirect to /home
+    // If user is logged in, redirect to /dashboard
     if (isLoggedIn === 'true') {
-      router.push('/home');
+      router.push('/dashboard');
     }
   }, [router]);
 
@@ -36,7 +36,7 @@ const SignIn: React.FC = () => {
         // Redirect to the app's main page upon successful sign-in
         sessionStorage.setItem('isLoggedIn', 'true');
         setErrorMessage('');
-        router.push('/home'); // Change the redirection path as needed
+        router.push('/dashboard'); // Change the redirection path as needed
       } else {
         const data = await response.json();
         console.error('Sign-in error:', data.error);
