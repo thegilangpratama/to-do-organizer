@@ -16,8 +16,8 @@ export default function SignUp() {
     const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
 
     if (isLoggedIn) {
-      // Redirect to "/home" if the user is already logged in
-      router.push('/home');
+      // Redirect to "/dashboard" if the user is already logged in
+      router.push('/dashboard');
     }
   }, []); // Empty dependency array ensures the effect runs only once on component mount
 
@@ -34,7 +34,7 @@ export default function SignUp() {
       if (response.ok) {
         // Redirect to the app's main page upon successful sign-up
         setErrorMessage('');
-        router.push('/home');
+        router.push('/dashboard');
       } else {
         const data = await response.json();
         console.error('Sign-up error:', data.error);
