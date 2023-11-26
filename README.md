@@ -39,3 +39,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```bash
 npm run dev
 ```
+
+#### Source of Inspiration
+https://medium.com/@gattigaga/show-time-shoryuken-trello-like-web-app-using-nextjs-and-tailwindcss-271461394849
