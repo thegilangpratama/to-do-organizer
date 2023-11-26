@@ -48,7 +48,7 @@ const BoardTitle: React.FC<Props> = ({ id }) => {
       {!isEditing && (
         <h1
           ref={refText}
-          className="px-1 text-white text-lg font-semibold inline-block cursor-pointer"
+          className="px-1 text-black text-2xl font-semilight inline-block cursor-pointer"
           tabIndex={0}
           onClick={() => {
             setIsEditing(true);

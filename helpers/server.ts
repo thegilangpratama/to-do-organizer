@@ -13,7 +13,7 @@ export const withAuthGuard =
   async (context: GetServerSidePropsContext<ParsedUrlQuery, PreviewData>) => {
     // Check validity of JWT access token.
     const cookies = cookie.parse(context.req.headers?.cookie || "");
-    // const { error } = await supabase.auth.api.getUser(cookies.access_token);
+    const { error } = await supabase.auth.api.getUser(cookies.access_token);
 
     if (error) {
       return {

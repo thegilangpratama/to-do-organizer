@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useQueryClient } from "react-query";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
+import Link from "next/link";
+import { MdChevronLeft } from "react-icons/md";
 
 import Avatar from "./Avatar";
 import useSignOutMutation from "../hooks/auth/use-sign-out-mutation";
@@ -54,13 +56,30 @@ const NavBar: React.FC<Props> = ({}) => {
   }, []);
 
   return (
-    <div className="h-12 bg-blue-700 flex flex-row justify-between items-center px-4">
+    <div className="h-16 bg-white border-b border-slate-200 flex flex-row justify-between items-center px-4">
       <Image
-        src="/images/logo-with-text-white.svg"
-        alt="Charcentric logo"
+        src="/images/trello.svg"
+        alt="charcentric logo"
         width={144}
         height={28}
       />
+      <Link href="/dashboard">
+        <div className="flex -ml-5 justify-center hover:bg-slate-200 px-2 py-2 rounded-xl hover:border hover:border-gray-400">
+          <a className="mr-4">
+            <div className="w-8 h-8 rounded flex items-center justify-center">
+            <Image
+              src="/images/trello-mark-blue.svg"
+              alt="Dashboard logo"
+              width={24}
+              height={24}
+            />
+            </div>
+          </a>
+          <p className="text-slate-500 flex items-center -ml-3">
+            Boards
+          </p>
+        </div>
+      </Link>
       {userQuery.status === "success" && (
         <div className="relative">
           <div ref={refAvatar}>

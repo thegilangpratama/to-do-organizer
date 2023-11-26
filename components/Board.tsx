@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { getExcerpt } from "../helpers/formatter";
 
@@ -9,10 +9,22 @@ type Props = {
   isDisabled?: boolean;
 };
 
+const getRandomColor = (): string => {
+  const colors: string[] = ['#EBFDF5', '#F4F4F4', '#F8E8E8', '#F4F4FF', '#FEF7EF'];
+  const randomIndex: number = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+};
+
 const Board: React.FC<Props> = ({ title, href, isDisabled }) => {
+  const [backgroundColor, setBackgroundColor] = useState<string>('');
+
+  useEffect(() => {
+    setBackgroundColor(getRandomColor());
+  }, []);
+
   const content = (
-    <div className="p-4 h-32 bg-blue-700 rounded hover:bg-blue-800">
-      <p className="text-md font-semibold text-white">
+    <div className={`p-4 h-32 rounded-xl`} style={{ backgroundColor }}>
+      <p className="text-md font-semilight text-black">
         {getExcerpt(title, 50)}
       </p>
     </div>

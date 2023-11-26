@@ -21,7 +21,7 @@ const CreateListForm: React.FC<Props> = ({ boardId }) => {
   const containerVariants = {
     closed: {
       height: 48,
-      background: "rgb(59 130 246)", // bg-blue-500
+      background: "rgb(253 230 138)", // bg-slate-500
       transition: {
         staggerChildren: 0.05,
         when: "afterChildren",
@@ -29,7 +29,7 @@ const CreateListForm: React.FC<Props> = ({ boardId }) => {
     },
     opened: {
       height: 106,
-      background: "rgb(203 213 225)", // bg-slate-300
+      background: "rgb(254 243 199)", // bg-slate-300
       transition: {
         staggerChildren: 0.05,
         when: "beforeChildren",
@@ -108,7 +108,7 @@ const CreateListForm: React.FC<Props> = ({ boardId }) => {
   return (
     <motion.div
       ref={refContainer}
-      className={classnames("shrink-0 w-72 rounded overflow-hidden", {
+      className={classnames("shrink-0 w-72 rounded-xl overflow-hidden", {
         "cursor-pointer": !isOpen,
       })}
       variants={containerVariants}
@@ -138,7 +138,7 @@ const CreateListForm: React.FC<Props> = ({ boardId }) => {
       >
         <input
           ref={refInput}
-          className="w-full py-3 rounded text-xs border-slate-400 outline-blue-500 mb-2"
+          className="w-full py-3 rounded-xl text-xs border-slate-400 outline-slate-500 mb-2"
           type="text"
           name="title"
           placeholder="Enter list title..."
@@ -180,7 +180,7 @@ const CreateListForm: React.FC<Props> = ({ boardId }) => {
 
       {/* Closed */}
       <motion.div
-        className="flex items-center px-4 h-full transition-all duration-200 hover:bg-blue-400"
+        className="flex items-center px-4 h-full transition-all duration-200 hover:bg-amber-50"
         variants={closedVariants}
         initial="close"
         animate={isOpen ? "opened" : "closed"}
@@ -190,8 +190,8 @@ const CreateListForm: React.FC<Props> = ({ boardId }) => {
         }}
         onClick={() => setIsOpen(true)}
       >
-        <MdAdd color="white" size={24} />
-        <p className="ml-2 text-xs text-white">Create new list</p>
+        <MdAdd color="black" size={24} />
+        <p className="ml-2 text-xs text-black">Create new list</p>
       </motion.div>
     </motion.div>
   );

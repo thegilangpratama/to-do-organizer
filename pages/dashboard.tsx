@@ -7,7 +7,16 @@ import Board from "../components/Board";
 import CreateBoardButton from "../components/CreateBoardButton";
 import ModalCreateBoard from "../components/ModalCreateBoard";
 import Layout from "../components/Layout";
+import { withAuthGuard } from "../helpers/server";
 import useBoardsQuery from "../hooks/boards/use-boards-query";
+
+export const getServerSideProps: GetServerSideProps = withAuthGuard(
+  async () => {
+    return {
+      props: {},
+    };
+  }
+);
 
 const DashboardPage: NextPage = () => {
   const [isCreateBoardOpen, setIsCreateBoardOpen] = useState(false);
@@ -16,16 +25,16 @@ const DashboardPage: NextPage = () => {
   return (
     <Layout>
       <Head>
-        <title>Dashboard | Charcentric</title>
+        <title>Dashboard | charcentric</title>
       </Head>
 
       <div className="min-h-full">
         {boardsQuery.status === "success" && (
           <div className="px-8 pt-12 pb-32 w-full mx-auto sm:w-5/6">
-            <h1 className="text-2xl font-semibold text-slate-600 mb-8">
+            <h1 className="text-3xl font-semilight text-slate-600 mb-8">
               My Boards
             </h1>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 bg-">
               {boardsQuery.data.map((board: any) => {
                 return (
                   <Board
@@ -47,7 +56,7 @@ const DashboardPage: NextPage = () => {
               width={8}
               radius={16}
               margin={4}
-              color="rgb(29 78 216)"
+              color="rgb(245 158 11)"
             />
           </div>
         )}

@@ -142,7 +142,7 @@ const CardChecklist: React.FC<Props> = ({ id }) => {
           </div>
           <div className="w-full h-2 bg-slate-200 rounded-full">
             <motion.div
-              className="w-0 h-full bg-blue-600 rounded-full"
+              className="w-0 h-full bg-slate-600 rounded-full"
               animate={{
                 width: `${percentage}%`,
                 background: progressColor,

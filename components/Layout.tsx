@@ -9,7 +9,7 @@ type Props = {
 
 const Layout: React.FC<Props> = ({ children }) => {
   return (
-    <div className="h-screen bg-slate-50 flex flex-col">
+    <div className="h-screen bg-white flex flex-col">
       <NavBar />
 
       <main className="flex-1 overflow-auto flex flex-col">

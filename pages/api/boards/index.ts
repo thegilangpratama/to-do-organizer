@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 import { getSlug } from "../../../helpers/formatter";
-import { supabase } from "@/utils/supabase";
+import supabase from "../../../helpers/supabase";
 
 type Content = {
   data?: any;

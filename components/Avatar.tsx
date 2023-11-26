@@ -15,8 +15,8 @@ const Avatar: React.FC<Props> = ({ fullname, onClick }) => {
 
   return (
     <button type="button" onClick={onClick}>
-      <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-        <p className="font-semibold text-xs text-blue-700">{initials}</p>
+      <div className="w-8 h-8 rounded-full bg-slate-200 border border-gray-400 flex items-center justify-center">
+        <p className="font-semibold text-xs text-black">{initials}</p>
       </div>
     </button>
   );

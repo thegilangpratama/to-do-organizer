@@ -12,7 +12,7 @@ const Button = forwardRef<Ref, Props>(
     {
       className,
       children,
-      backgroundColor = ["bg-blue-700", "bg-blue-800"],
+      backgroundColor = ["bg-slate-700", "bg-slate-800"],
       textColor = "text-white",
       ...rest
     },
@@ -21,7 +21,7 @@ const Button = forwardRef<Ref, Props>(
     return (
       <button
         ref={ref}
-        className={`${backgroundColor[0]} ${textColor} px-3 py-3 rounded font-sans text-xs font-semibold outline-blue-400 hover:${backgroundColor[1]} disabled:bg-slate-200 disabled:text-slate-500 ${className}`}
+        className={`${backgroundColor[0]} ${textColor} px-3 py-3 rounded font-sans text-xs font-semibold outline-slate-400 hover:${backgroundColor[1]} disabled:bg-slate-200 disabled:text-slate-500 ${className}`}
         {...rest}
       >
         {children}

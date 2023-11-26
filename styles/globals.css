@@ -31,11 +31,11 @@
 }
 
 .react-calendar__tile--now {
-  @apply text-blue-500 font-bold;
+  @apply text-slate-500 font-bold;
 }
 
 .react-calendar__tile--active {
-  @apply bg-blue-100;
+  @apply bg-slate-100;
 }
 
 .react-calendar__month-view__days__day--neighboringMonth {

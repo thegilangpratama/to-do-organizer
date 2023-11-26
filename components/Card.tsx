@@ -67,7 +67,7 @@ const Card: React.FC<Props> = ({
           <div className="flex items-center mt-2">
             {!!dueDate && (
               <div
-                className={`flex items-center rounded py-1 px-1 pr-2 mr-2 ${dueDateClassNames}`}
+                className={`flex items-center rounded-xl py-1 px-1 pr-2 mr-2 ${dueDateClassNames}`}
               >
                 <MdTimer size={18} />
                 <p className="text-xs ml-1">{dueDateLabel}</p>
@@ -80,7 +80,7 @@ const Card: React.FC<Props> = ({
             )}
             {hasChecklist && (
               <div
-                className={classnames("flex items-center rounded p-1 pr-2", {
+                className={classnames("flex items-center rounded-xl p-1 pr-2", {
                   "bg-green-500": isAllChecked,
                   "text-white": isAllChecked,
                   "text-slate-500": !isAllChecked,
@@ -103,7 +103,7 @@ const Card: React.FC<Props> = ({
 
   if (isDisabled) {
     return (
-      <div className="mb-2 group p-2 bg-white rounded shadow flex hover:bg-slate-200">
+      <div className="mb-2 group p-2 bg-white rounded-xl shadow flex hover:bg-slate-200">
         {content}
       </div>
     );
@@ -115,7 +115,7 @@ const Card: React.FC<Props> = ({
         <Link href={href}>
           <a>
             <div
-              className="mb-2 group p-2 bg-white rounded shadow flex hover:bg-slate-200"
+              className="mb-2 group p-2 bg-white rounded-xl shadow flex hover:bg-slate-200"
               ref={provided.innerRef}
               {...provided.draggableProps}
               {...provided.dragHandleProps}

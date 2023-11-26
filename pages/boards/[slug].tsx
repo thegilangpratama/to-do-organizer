@@ -1,7 +1,5 @@
 import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import { MdChevronLeft } from "react-icons/md";
 import { DragDropContext, Droppable, DropResult } from "react-beautiful-dnd";
 import classnames from "classnames";
 import toast from "react-hot-toast";
@@ -147,25 +145,18 @@ const BoardDetailPage: React.FC<Props> = ({}) => {
     <Layout>
       <Head>
         <title>
-          {boardQuery.data && `${boardQuery.data.title} | `}Charcentric
+          {boardQuery.data && `${boardQuery.data.title} | `}charcentric
         </title>
       </Head>
 
-      <div className="bg-blue-600 h-screen flex flex-col">
+      <div className="bg-white h-screen flex flex-col">
         {deleteBoardMutation.status === "idle" &&
           boardQuery.status === "success" && (
             <>
               <div className="flex items-center my-4 px-4">
-                <Link href="/dashboard">
-                  <a className="mr-4">
-                    <div className="w-8 h-8 bg-blue-500 rounded flex items-center justify-center">
-                      <MdChevronLeft color="white" size={24} />
-                    </div>
-                  </a>
-                </Link>
                 <BoardTitle id={boardQuery.data.id} />
                 <button
-                  className="ml-6 px-2 text-xs h-8 bg-blue-500  text-white font-semibold rounded items-center justify-center"
+                  className="ml-6 px-2 text-xs h-8 bg-gray-200  text-black font-semilight rounded items-center justify-center"
                   type="button"
                   onClick={deleteBoard}
                 >
@@ -220,7 +211,7 @@ const BoardDetailPage: React.FC<Props> = ({}) => {
                       width={8}
                       radius={16}
                       margin={4}
-                      color="rgb(29 78 216)"
+                      color="rgb(245 158 11)"
                     />
                   </div>
                 )}
@@ -235,21 +226,21 @@ const BoardDetailPage: React.FC<Props> = ({}) => {
               width={8}
               radius={16}
               margin={4}
-              color="rgb(29 78 216)"
+              color="rgb(245 158 11)"
             />
           </div>
         )}
         {boardQuery.status === "error" && (
           <div className="h-full w-full flex flex-col items-center pt-32">
-            <p className="font-semibold text-white text-3xl mb-6">
+            <p className="font-semibold text-black text-3xl mb-6">
               Board not found
             </p>
-            <p className="text-white text-sm text-center px-4 max-w-lg mb-8">
+            <p className="text-black text-sm text-center px-4 max-w-lg mb-8">
               This board may be private. If someone gave you this link, they may
               need to invite you to one of their boards or Workspaces.
             </p>
             <button
-              className="ml-6 px-2 text-xs h-8 bg-blue-500  text-white font-semibold rounded items-center justify-center"
+              className="ml-6 px-2 text-xs h-8 bg-slate-500  text-white font-semibold rounded items-center justify-center"
               type="button"
               onClick={() => router.replace("/dashboard")}
             >

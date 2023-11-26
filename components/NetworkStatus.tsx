@@ -3,7 +3,7 @@ import { MdSignalWifiBad } from "react-icons/md";
 import { motion } from "framer-motion";
 
 type Props = {};
- 
+
 const NetworkStatus: React.FC<Props> = ({}) => {
   const [isOnline, setIsOnline] = useState(true);
 

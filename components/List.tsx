@@ -113,6 +113,18 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
     }
   }, [isCreateCardFormOpen]);
 
+  const getRandomColor = (): string => {
+    const colors: string[] = ['#EBFDF5', '#F4F4F4', '#F8E8E8', '#F4F4FF', '#FEF7EF'];
+    const randomIndex: number = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex];
+  };
+
+  const [backgroundColor, setBackgroundColor] = useState<string>('');
+
+  useEffect(() => {
+    setBackgroundColor(getRandomColor());
+  }, []);
+
   // Close form if outside is clicked.
   useEffect(() => {
     const handleClickOutside = (event: any) => {
@@ -136,19 +148,20 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
         <div
           ref={provided.innerRef}
           className={classnames(
-            "shrink-0 w-72 bg-slate-300 rounded mr-2 flex flex-col",
+            "shrink-0 w-72 rounded-xl mr-10 flex flex-col",
             {
               "shadow-xl": snapshot.isDragging,
             }
           )}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
+          style={{ backgroundColor }}
         >
           {/* Header */}
           <div className="w-full flex items-center px-2 h-12">
             {!isEditingTitle ? (
               <button
-                className="flex-1 text-left px-2 py-1 text-sm text-slate-700 font-semibold"
+                className="flex-1 text-left px-2 py-1 text-sm text-black font-semilight text-lg"
                 type="button"
                 onClick={() => setIsEditingTitle(true)}
               >
@@ -158,7 +171,7 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
               <div className="flex-1">
                 <input
                   ref={refListTitleInput}
-                  className="w-full px-2 py-1 text-sm text-slate-700 font-semibold rounded"
+                  className="w-full px-2 py-1 text-sm text-slate-700 font-semibold rounded-xl"
                   type="text"
                   defaultValue={title}
                   onKeyDown={(event) => {
@@ -173,7 +186,7 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
               </div>
             )}
             <button
-              className="ml-2 w-8 h-8 flex items-center justify-center rounded text-slate-500 hover:text-slate-600 hover:bg-slate-400"
+              className="ml-2 w-8 h-8 flex items-center justify-center rounded-xl text-slate-500 hover:text-slate-600 hover:bg-slate-400"
               type="button"
               onClick={deleteList}
             >
@@ -230,10 +243,10 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
             {/* Create card form */}
             {isCreateCardFormOpen && (
               <div ref={refCreateCardForm} className="pb-2">
-                <div className="bg-white rounded shadow mb-2">
+                <div className="bg-white rounded-xl shadow mb-2">
                   <textarea
                     ref={refCardTitleInput}
-                    className="w-full p-2 border-0 resize-none rounded text-xs h-16 focus:ring-0"
+                    className="w-full p-2 border-0 resize-none rounded-xl text-xs h-16 focus:ring-0"
                     value={cardTitle}
                     placeholder="Enter a title for this card..."
                     onChange={(event) => setCardTitle(event.target.value)}
@@ -291,7 +304,7 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
           {!isCreateCardFormOpen && (
             <div className="px-2 h-10 flex items-start">
               <button
-                className="w-full px-2 py-1 rounded flex items-center text-slate-500 hover:text-slate-600 hover:bg-slate-400"
+                className="w-full px-2 py-1 rounded-xl flex items-center text-slate-500 hover:text-slate-600 hover:bg-slate-400"
                 type="button"
                 onClick={() => setIsCreateCardFormOpen(true)}
               >
