@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Board {
+  id         Int      @id @default(autoincrement()) @db.Integer
+  user_id    String   @db.Uuid
+  title      String
+  slug       String
+  created_at DateTime @default(now()) @db.Timestamptz
+
+  // Define foreign key relationship
+  User  User   @relation(fields: [user_id], references: [id])
+  lists List[]
+}
+
+model List {
+  id         Int      @id @default(autoincrement()) @db.Integer
+  board_id   Int      @db.Integer
+  index      Int      @db.Integer
+  title      String
+  created_at DateTime @default(now()) @db.Timestamptz
+
+  // Define foreign key relationship
+  Board Board  @relation(fields: [board_id], references: [id])
+  cards Card[]
+}
+
+model Card {
+  id            Int      @id @default(autoincrement()) @db.Integer
+  list_id       Int      @db.Integer
+  index         Int      @db.Integer
+  title         String
+  description   String
+  slug          String
+  has_checklist Boolean
+  created_at    DateTime @default(now()) @db.Timestamptz
+
+  // Define foreign key relationship
+  List      List      @relation(fields: [list_id], references: [id])
+  checks    Check[]
+  due_dates DueDate[]
+}
+
+model Check {
+  id         Int      @id @default(autoincrement()) @db.Integer
+  card_id    Int      @db.Integer
+  index      Int      @db.Integer
+  content    String
+  is_checked Boolean
+  created_at DateTime @default(now()) @db.Timestamptz
+
+  // Define foreign key relationship
+  Card Card @relation(fields: [card_id], references: [id])
+}
+
+model DueDate {
+  id         Int      @id @default(autoincrement()) @db.Integer
+  card_id    Int      @db.Integer
+  timestamp  DateTime
+  is_done    Boolean
+  created_at DateTime @default(now()) @db.Timestamptz
+
+  // Define foreign key relationship
+  Card Card @relation(fields: [card_id], references: [id])
+}
+
+model User {
+  id     String  @id @default(uuid()) @db.Uuid
+  // Add other fields as needed
+  boards Board[]
+}
