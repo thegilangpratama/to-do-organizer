@@ -23,7 +23,7 @@ const Board: React.FC<Props> = ({ title, href, isDisabled }) => {
   }, []);
 
   const content = (
-    <div className={`p-4 h-32 rounded-xl`} style={{ backgroundColor }}>
+    <div className={`p-4 h-32 rounded-xl flex justify-center items-center`} style={{ backgroundColor }}>
       <p className="text-md font-semilight text-black">
         {getExcerpt(title, 50)}
       </p>

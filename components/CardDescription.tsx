@@ -67,7 +67,7 @@ const CardDescription: React.FC<Props> = ({ id }) => {
           <>
             {cardQuery.data?.description ? (
               <button
-                className="w-full text-left flex text-slate-700 text-xs rounded py-1"
+                className="w-full text-left flex text-slate-700 text-xs rounded-xl py-1"
                 type="button"
                 onClick={() => {
                   setIsEditing(true);
@@ -83,7 +83,7 @@ const CardDescription: React.FC<Props> = ({ id }) => {
               </button>
             ) : (
               <button
-                className="w-full text-left flex text-slate-700 text-xs h-16 bg-slate-300 rounded p-3 hover:bg-slate-400"
+                className="w-full text-left flex text-slate-700 text-xs h-16 rounded-xl p-3 hover:bg-[#F4F4F4] border-2 border-gray-300 border-dashed"
                 type="button"
                 onClick={() => {
                   setIsEditing(true);
@@ -102,7 +102,7 @@ const CardDescription: React.FC<Props> = ({ id }) => {
           <div>
             <textarea
               ref={refInput}
-              className="w-full h-24 p-3 rounded text-xs resize-none"
+              className="w-full h-24 p-3 rounded-xl text-xs resize-none"
               placeholder="Add a more detailed description..."
               value={description}
               onChange={(event) => setDescription(event.target.value)}
