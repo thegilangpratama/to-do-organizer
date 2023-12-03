@@ -10,6 +10,7 @@ type Props = {
   href: string;
   index: number;
   title: string;
+  description: string;
   dueDate?: string;
   totalChecks?: number;
   totalCompletedChecks?: number;
@@ -24,6 +25,7 @@ const Card: React.FC<Props> = ({
   href,
   index,
   title,
+  description,
   dueDate,
   totalChecks,
   totalCompletedChecks,
@@ -61,8 +63,8 @@ const Card: React.FC<Props> = ({
 
   const content = (
     <>
-      <div className="flex-1 mr-4">
-        <p className="text-xs break-all">{title}</p>
+      <div className="flex-1 mr-4 px-2">
+        <p className="text-sm break-all text-black">{title}</p>
         {hasContent && (
           <div className="flex items-center mt-2">
             {!!dueDate && (
@@ -73,11 +75,11 @@ const Card: React.FC<Props> = ({
                 <p className="text-xs ml-1">{dueDateLabel}</p>
               </div>
             )}
-            {hasDescription && (
+            {/* {hasDescription && (
               <span className="text-slate-500 mr-2">
                 <MdSubject size={20} />
               </span>
-            )}
+            )} */}
             {hasChecklist && (
               <div
                 className={classnames("flex items-center rounded-xl p-1 pr-2", {
@@ -94,8 +96,9 @@ const Card: React.FC<Props> = ({
             )}
           </div>
         )}
+        <p className="text-xs break-all text-neutral-400">{description}</p>
       </div>
-      <span className="text-white group-hover:text-slate-500">
+      <span className="text-[#CDCCCA] group-hover:text-[#e6e5e5]">
         <MdEdit size={16} />
       </span>
     </>
@@ -103,7 +106,7 @@ const Card: React.FC<Props> = ({
 
   if (isDisabled) {
     return (
-      <div className="mb-2 group p-2 bg-white rounded-xl shadow flex hover:bg-slate-200">
+      <div className="mb-2 group p-2 bg-white rounded-xl h-32 shadow flex hover:bg-slate-300">
         {content}
       </div>
     );
@@ -115,7 +118,7 @@ const Card: React.FC<Props> = ({
         <Link href={href}>
           <a>
             <div
-              className="mb-2 group p-2 bg-white rounded-xl shadow flex hover:bg-slate-200"
+              className="mb-3 group p-2 bg-[#F4F4F4] rounded-xl h-auto py-3 flex hover:bg-gray-50"
               ref={provided.innerRef}
               {...provided.draggableProps}
               {...provided.dragHandleProps}

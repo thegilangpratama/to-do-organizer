@@ -20,16 +20,17 @@ const CreateListForm: React.FC<Props> = ({ boardId }) => {
 
   const containerVariants = {
     closed: {
-      height: 48,
-      background: "rgb(253 230 138)", // bg-slate-500
+      height: 100,
+      background: "rgb(255, 255, 255)", // bg-slate-500
       transition: {
         staggerChildren: 0.05,
         when: "afterChildren",
       },
+      border: "2px dashed lightgray", // Adjust the border width and color as needed
     },
     opened: {
-      height: 106,
-      background: "rgb(254 243 199)", // bg-slate-300
+      height: 200,
+      background: "rgb(248 248 248)", // bg-slate-300
       transition: {
         staggerChildren: 0.05,
         when: "beforeChildren",
@@ -180,7 +181,7 @@ const CreateListForm: React.FC<Props> = ({ boardId }) => {
 
       {/* Closed */}
       <motion.div
-        className="flex items-center px-4 h-full transition-all duration-200 hover:bg-amber-50"
+        className="items-center justify-center px-4 h-full transition-all text-center text-slate-300 duration-200 hover:bg-[#F8F8F8]"
         variants={closedVariants}
         initial="close"
         animate={isOpen ? "opened" : "closed"}
@@ -190,8 +191,8 @@ const CreateListForm: React.FC<Props> = ({ boardId }) => {
         }}
         onClick={() => setIsOpen(true)}
       >
-        <MdAdd color="black" size={24} />
-        <p className="ml-2 text-xs text-black">Create new list</p>
+        {/* <MdAdd color="black" size={24} /> */}
+        <p className="ml-2 text-xs text-slate-500">Create new list</p>
       </motion.div>
     </motion.div>
   );

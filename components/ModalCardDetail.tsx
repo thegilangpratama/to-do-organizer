@@ -103,7 +103,7 @@ const ModalCardDetail: React.FC<Props> = ({}) => {
         </title>
       </Head>
 
-      <div className="w-full rounded bg-slate-100 p-5 pb-10 min-h-[480px] flex flex-col">
+      <div className="w-full rounded-xl bg-white p-5 pb-10 min-h-[480px] flex flex-col">
         {cardQuery.status === "success" && (
           <>
             {/* Header Side */}
@@ -137,7 +137,7 @@ const ModalCardDetail: React.FC<Props> = ({}) => {
                     Add to card
                   </p>
                   <button
-                    className="flex items-center rounded bg-slate-200 hover:bg-slate-300 text-slate-700 w-full px-2 py-2 mb-1"
+                    className="flex items-center rounded-xl bg-slate-200 hover:bg-slate-100 text-slate-700 w-full px-2 py-2 mb-1"
                     type="button"
                     onClick={addChecklist}
                   >
@@ -145,7 +145,7 @@ const ModalCardDetail: React.FC<Props> = ({}) => {
                     <p className="text-sm ml-3">Checklist</p>
                   </button>
                   <button
-                    className="flex items-center rounded bg-slate-200 hover:bg-slate-300 text-slate-700 w-full px-2 py-2"
+                    className="flex items-center rounded-xl bg-slate-200 hover:bg-slate-100 text-slate-700 w-full px-2 py-2"
                     type="button"
                     onClick={() => {
                       if (!!cardQuery.data.due_dates.length) {
@@ -173,7 +173,7 @@ const ModalCardDetail: React.FC<Props> = ({}) => {
                     Actions
                   </p>
                   <button
-                    className="flex items-center rounded bg-red-700 hover:bg-red-800 text-white w-full px-2 py-2"
+                    className="flex items-center rounded-xl bg-red-700 hover:bg-red-500 text-white w-full px-2 py-2"
                     type="button"
                     onClick={deleteCard}
                   >

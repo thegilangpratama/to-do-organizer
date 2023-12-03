@@ -149,7 +149,7 @@ const BoardDetailPage: React.FC<Props> = ({}) => {
         </title>
       </Head>
 
-      <div className="bg-white h-screen flex flex-col">
+      <div className="bg-white h-screen flex flex-col md:mx-8">
         {deleteBoardMutation.status === "idle" &&
           boardQuery.status === "success" && (
             <>
@@ -167,7 +167,7 @@ const BoardDetailPage: React.FC<Props> = ({}) => {
                 {listsQuery.status === "success" && (
                   <div
                     className={classnames(
-                      "overflow-x-auto flex-1",
+                      "md:overflow-x-auto flex-1",
                       styles.content
                     )}
                   >

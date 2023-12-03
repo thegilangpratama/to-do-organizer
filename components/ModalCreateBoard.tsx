@@ -75,18 +75,20 @@ const ModalCreateBoard: React.FC<Props> = ({ isOpen, onRequestClose }) => {
         {({ values, errors, handleChange, handleSubmit, isSubmitting }) => (
           <div>
             <form onSubmit={handleSubmit}>
-              <div className="p-4 h-32 w-80 bg-slate-700 rounded mb-4">
+              <div className="p-4 h-32 w-80 bg-white rounded-xl mb-4">
                 <input
                   ref={refInput}
-                  className="bg-slate-600 text-md text-white font-semibold border-none w-full rounded px-2"
+                  className="text-md text-black font-semibold w-full rounded-xl px-2 border-2 border-dashed border-gray-300 h-10"
                   name="title"
                   type="text"
+                  placeholder="Enter board name"
                   value={values.title}
                   onChange={handleChange}
                   disabled={isSubmitting}
                 />
               </div>
               <Button
+              className="rounded-xl"
                 backgroundColor={["bg-green-600", "bg-green-700"]}
                 disabled={!!errors.title || isSubmitting}
               >
