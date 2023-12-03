@@ -7,7 +7,7 @@ type Props = {
 const CreateBoardButton: React.FC<Props> = ({ onClick }) => {
   return (
     <button
-      className="p-4 h-32 bg-slate-200 rounded hover:bg-slate-300"
+      className="p-4 h-32 hover:bg-[#f4f4f4] rounded-xl border-dashed border-2"
       type="button"
       onClick={onClick}
     >

@@ -113,17 +113,17 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
     }
   }, [isCreateCardFormOpen]);
 
-  const getRandomColor = (): string => {
-    const colors: string[] = ['#EBFDF5', '#F4F4F4', '#F8E8E8', '#F4F4FF', '#FEF7EF'];
-    const randomIndex: number = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-  };
+  // const getRandomColor = (): string => {
+  //   const colors: string[] = ['#EBFDF5', '#F4F4F4', '#F8E8E8', '#F4F4FF', '#FEF7EF'];
+  //   const randomIndex: number = Math.floor(Math.random() * colors.length);
+  //   return colors[randomIndex];
+  // };
 
-  const [backgroundColor, setBackgroundColor] = useState<string>('');
+  // const [backgroundColor, setBackgroundColor] = useState<string>('');
 
-  useEffect(() => {
-    setBackgroundColor(getRandomColor());
-  }, []);
+  // useEffect(() => {
+  //   setBackgroundColor(getRandomColor());
+  // }, []);
 
   // Close form if outside is clicked.
   useEffect(() => {
@@ -155,13 +155,13 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
           )}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          style={{ backgroundColor }}
+          // style={{ backgroundColor }}
         >
           {/* Header */}
-          <div className="w-full flex items-center px-2 h-12">
+          <div className="w-full flex items-center px-2 h-12 bg-[#f4f4f4] rounded-xl mb-3">
             {!isEditingTitle ? (
               <button
-                className="flex-1 text-left px-2 py-1 text-sm text-black font-semilight text-lg"
+                className="flex-1 text-left px-2 py-1 text-sm text-black font-semilight"
                 type="button"
                 onClick={() => setIsEditingTitle(true)}
               >
@@ -171,7 +171,7 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
               <div className="flex-1">
                 <input
                   ref={refListTitleInput}
-                  className="w-full px-2 py-1 text-sm text-slate-700 font-semibold rounded-xl"
+                  className="w-full px-2 py-1 text-sm text-black font-semibold rounded-xl"
                   type="text"
                   defaultValue={title}
                   onKeyDown={(event) => {
@@ -198,7 +198,7 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
           <div
             ref={refChildren}
             style={{ maxHeight }}
-            className={classnames("overflow-y-auto px-2", styles.content)}
+            className={classnames("", styles.content)}
           >
             {/* Card list */}
             <Droppable droppableId={`list-${id}`} type="CARD">
@@ -222,6 +222,7 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
                             href={href}
                             index={index}
                             title={card.title}
+                            description={card.description}
                             dueDate={card.due_dates?.[0]?.timestamp}
                             totalChecks={totalChecks}
                             totalCompletedChecks={totalCompletedChecks}
@@ -243,10 +244,10 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
             {/* Create card form */}
             {isCreateCardFormOpen && (
               <div ref={refCreateCardForm} className="pb-2">
-                <div className="bg-white rounded-xl shadow mb-2">
+                <div className="bg-white border-dashed border-2 border-slate-300 rounded-xl mb-2">
                   <textarea
                     ref={refCardTitleInput}
-                    className="w-full p-2 border-0 resize-none rounded-xl text-xs h-16 focus:ring-0"
+                    className="w-full p-2 border-0 resize-none rounded-xl text-xs h-16 focus:ring-0 pl-5 pt-5"
                     value={cardTitle}
                     placeholder="Enter a title for this card..."
                     onChange={(event) => setCardTitle(event.target.value)}
@@ -298,21 +299,20 @@ const List: React.FC<Props> = ({ id, boardId, index, title }) => {
                 </div>
               </div>
             )}
-          </div>
-
-          {/* Footer */}
+            {/* Footer */}
           {!isCreateCardFormOpen && (
-            <div className="px-2 h-10 flex items-start">
+            <div className="h-10 flex items-start">
               <button
-                className="w-full px-2 py-1 rounded-xl flex items-center text-slate-500 hover:text-slate-600 hover:bg-slate-400"
+                className="w-full px-2 py-1 rounded-xl flex items-center justify-center border-2 border-dashed border-slate-300 h-32 text-slate-500 hover:text-slate-600 hover:bg-[#f8f8f8]"
                 type="button"
                 onClick={() => setIsCreateCardFormOpen(true)}
               >
-                <MdAdd size={24} />
-                <p className="ml-2 text-xs">Add a card</p>
+                <MdAdd size={15} />
+                <p className="text-xs">Add a card</p>
               </button>
             </div>
           )}
+          </div>
         </div>
       )}
     </Draggable>
