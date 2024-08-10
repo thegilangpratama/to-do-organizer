@@ -25,7 +25,7 @@ const DashboardPage: NextPage = () => {
   return (
     <Layout>
       <Head>
-        <title>Dashboard | charcentric</title>
+        <title>Dashboard | To Do</title>
       </Head>
 
       <div className="min-h-full">

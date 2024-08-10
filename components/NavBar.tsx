@@ -60,7 +60,7 @@ const NavBar: React.FC<Props> = ({}) => {
       <div className="flex flex-row justify-between items-center ">
         <Image
           src="/images/trello.svg"
-          alt="charcentric logo"
+          alt="To Do logo"
           width={144}
           height={28}
         />

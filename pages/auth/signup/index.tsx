@@ -40,7 +40,7 @@ const SignUpPage = () => {
   return (
     <div className="min-h-screen md:bg-slate-50">
       <Head>
-        <title>Sign Up | charcentric</title>
+        <title>Sign Up | To Do</title>
       </Head>
 
       <main className="py-12">
@@ -177,7 +177,7 @@ const SignUpPage = () => {
                         By signing up, I accept the{" "}
                         <Link href="/">
                           <a className="text-slate-700">
-                            charcentric Terms of Service
+                            To Do Terms of Service
                           </a>
                         </Link>{" "}
                         and acknowledge the{" "}

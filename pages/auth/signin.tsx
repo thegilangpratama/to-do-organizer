@@ -44,7 +44,7 @@ const SignInPage = () => {
   return (
     <div className="min-h-screen md:bg-slate-50">
       <Head>
-        <title>Sign In | charcentric</title>
+        <title>Sign In | To Do</title>
       </Head>
 
       <main className="py-12">

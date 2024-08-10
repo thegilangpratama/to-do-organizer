@@ -145,7 +145,7 @@ const BoardDetailPage: React.FC<Props> = ({}) => {
     <Layout>
       <Head>
         <title>
-          {boardQuery.data && `${boardQuery.data.title} | `}charcentric
+          {boardQuery.data && `${boardQuery.data.title} | `}To Do
         </title>
       </Head>
 

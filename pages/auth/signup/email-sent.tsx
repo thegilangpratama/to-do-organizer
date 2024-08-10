@@ -31,7 +31,7 @@ const EmailSentPage = () => {
   return (
     <div className="min-h-screen md:bg-slate-50">
       <Head>
-        <title>Verify your email | charcentric</title>
+        <title>Verify your email | To Do</title>
       </Head>
 
       <main className="py-12">

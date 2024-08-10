@@ -99,7 +99,7 @@ const ModalCardDetail: React.FC<Props> = ({}) => {
     >
       <Head>
         <title>
-          {cardQuery.data?.title && `${cardQuery.data.title} | `}charcentric
+          {cardQuery.data?.title && `${cardQuery.data.title} | `}To Do
         </title>
       </Head>
 

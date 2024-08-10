@@ -29,7 +29,7 @@ const ResetPasswordPage = () => {
   return (
     <div className="min-h-screen md:bg-slate-50">
       <Head>
-        <title>Reset Password | charcentric</title>
+        <title>Reset Password | To Do</title>
       </Head>
 
       <main className="py-12">

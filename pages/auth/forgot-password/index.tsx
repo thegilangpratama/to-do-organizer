@@ -25,7 +25,7 @@ const ForgotPasswordPage = () => {
   return (
     <div className="min-h-screen md:bg-slate-50">
       <Head>
-        <title>Forgot Password | charcentric</title>
+        <title>Forgot Password | To Do</title>
       </Head>
 
       <main className="py-12">
@@ -35,7 +35,7 @@ const ForgotPasswordPage = () => {
               <a>
                 <Image
                   src="/images/logo-with-text.svg"
-                  alt="charcentric logo"
+                  alt="To Do logo"
                   width={240}
                   height={64}
                 />
